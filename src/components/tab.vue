@@ -1,15 +1,15 @@
 <template>
   <div class="">
     <button-tab v-model="demo01" class="tab vux-1px-t">
-      <button-tab-item class="tab-item" href="/index">
+      <button-tab-item class="tab-item" href="#/index">
           <i class="fa fa-home fa-fw tab-item-icon"></i>
           <span class="tab-item-text">首页</span>
       </button-tab-item>
-      <button-tab-item class="tab-item" href="/shoppcart">
+      <button-tab-item class="tab-item" href="#/shoppcart">
           <i class="fa fa-shopping-cart fa-fw tab-item-icon"></i>
           <span class="tab-item-text">购物车</span>
       </button-tab-item>
-      <button-tab-item class="tab-item" href="/usercenter">
+      <button-tab-item class="tab-item" href="#/usercenter">
           <i class="fa fa-user-circle fa-fw tab-item-icon"></i>
           <span class="tab-item-text">我的</span>
       </button-tab-item>

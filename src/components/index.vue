@@ -1,8 +1,13 @@
 <template>
   <div id="index">
-    <group>
-     首页
-    </group>
+    <div class="menu">
+      <ul>
+        <li><span>美白</span></li>
+        <li><span>补水</span></li>
+        <li><span>控油</span></li>
+        <li><span>祛痘</span></li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -18,5 +23,6 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-
+  .menu
+    width: 80px
 </style>
