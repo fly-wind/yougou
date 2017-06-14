@@ -34,12 +34,17 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
+  .vux-1px-t::before
+    z-index: 1
   .tab
     position: fixed !important
     width: 100%
+    max-width: 750px
     height: 40px
     bottom: 0
     left: 0
+    right: 0
+    margin: auto
     .tab-item
       border-radius: 0 !important
       height: 40px
@@ -54,6 +59,6 @@
       .tab-item-text
         display: block
     .vux-button-group-current
-      background: none !important
+      background: #fff !important
       color: red !important
 </style>

@@ -14,32 +14,46 @@
       </ul>
     </div>-->
     <div class="products">
-      <div class="pro-item">
-        <div class="pro-item-img"><img src="../assets/images/20150419215324206738.png" alt="" /></div>
+      <div class="pro-item" v-for="item in mz">
+        <div class="pro-item-img"><img :src="item.src" alt="" /></div>
         <div class="pro-item-detail">
-          <h2 class="detail-title">欧莱雅(L'Oreal)复颜年轻立显修颜霜</h2>
+          <h2 class="detail-title" v-text="item.name"></h2>
           <div class="detail-price">
-            <span class="detail-price-new">￥200</span>
-            <span class="detail-price-old">￥300</span>
+            <span class="detail-price-new" v-text="'￥'+item.price"></span>
+            <span class="detail-price-old" v-text="'￥'+item.oldPrice"></span>
           </div>
           <div class="detail-sales">
-            <span class="detail-sales-percent">已售31%</span>
-            <span class="detail-sales-bar"></span>
+            <bar :value='item.sellCount' :max='item.count'></bar>
           </div>
           <XButton class="buy" mini text="立即购买"></XButton>
         </div>
       </div>
+      <divider>我是有底线的</divider>
     </div>
+    
   </div>
 </template>
 
 <script>
-  import {Grid, GridItem, XButton} from 'vux'
+  import {Grid, GridItem, XButton, Divider} from 'vux'
+  import bar from '../components/bar'
   export default {
     components: {
       Grid,
       GridItem,
-      XButton
+      XButton,
+      Divider,
+      bar
+    },
+    methods: {
+      getList () {
+        let data = require('../../data.json')
+        this.products = data.products
+        this.mz = this.products[0].pros
+      }
+    },
+    created () {
+      this.getList()
     }
   }
 </script>
@@ -47,17 +61,24 @@
 <style lang="stylus" rel="stylesheet/stylus">
 .products
   padding: 1rem
+  margin-bottom: 40px
   .pro-item
     display: flex
     padding: 0.5rem
     border: 1px solid rgba(230, 230, 230, 0.5)
     box-shadow: 1px 1px #ddd
+    margin-bottom: 1rem
     .pro-item-img
       flex: 0 0 120px
+      display: -webkit-box
+      -webkit-box-pack: center
+      -webkit-box-align: center
       img
-        width: 100%
+        width: 90%
+        display: block
     .pro-item-detail
       text-align: left;
+      width: 100%
       .detail-title,.detail-price,.detail-sales
         padding-bottom: 0.5rem;
       .detail-title
