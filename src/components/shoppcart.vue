@@ -4,7 +4,9 @@
     <div class="shopp-pros">
       <div class="pro-item" v-for="item in products" :key="item.goods_id">
         <div class="pro-shop-name vux-1px-b">
-          <x-icon type="ios-circle-outline" size="20" class="icon-check"></x-icon>
+          <input type="checkbox" class="pro-check" name="names">
+          <i class="icon-check"></i>
+          <!--<x-icon type="ios-circle-outline" size="20" class="icon-check"></x-icon>-->
           <span class="shop-name">{{item.shop_name}}</span>
         </div>
         <div class="pro-list">
@@ -26,15 +28,29 @@
         </div>
       </div>
     </div>
+    <div class="bottom vux-1px-t">
+      <div class="bottom-select bottom-item">
+        <x-icon type="ios-circle-outline" size="20" class="icon-check"></x-icon>
+        <p>全选</p>
+      </div>
+      <div class="bottom-money bottom-item">
+        <p>总计：￥<span>0.00</span></p>
+        <p>不含运费，已优惠￥<span>0.00</span></p>
+      </div>
+      <div class="bottom-count bottom-item">
+        <XButton class="buy" mini text="去结算(0件)"></XButton>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-  import {Group, XNumber} from 'vux'
+  import {Group, XNumber, XButton} from 'vux'
   export default {
     components: {
       Group,
-      XNumber
+      XNumber,
+      XButton
     },
     data () {
       return {
@@ -58,6 +74,22 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
+.icon-check
+  display: inline-block
+  border: 1px solid #000
+  width: 20px
+  height: 20px
+  border-radius: 50%
+.pro-check
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  opacity: 0
+.pro-check:checked + .icon-check
+  content: '\2714'
+  color: #fff
+  background: #f00
+  border: 1px solid #f00
 .shopp-pros
   padding: 1rem
   margin-bottom: 40px
@@ -94,7 +126,13 @@
       text-align: left;
       width: 100%
       .detail-title
-        padding-bottom: 0.5rem;
+        margin-bottom: 0.5rem
+        line-height: 1.5
+        overflow : hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
       .detail-style
         color: #ccc
       .detail-num
@@ -109,4 +147,26 @@
               fill: #ccc !important
         & ::after,& ::before
           border: none
+.bottom
+  display: flex
+  position: fixed !important
+  bottom: 40px
+  background: #fff
+  width: 100%
+  .bottom-item
+    text-align: center
+  .bottom-select
+    padding: 0.5rem 1rem;
+  .bottom-money
+    text-align:right
+    flex: 1
+    padding: 0.5rem 1rem;
+    line-height: 1.5
+  .bottom-count
+    .buy
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #ccc;
+      border-radius: 0;
 </style>

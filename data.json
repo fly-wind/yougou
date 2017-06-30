@@ -1,0 +1,50 @@
+{
+  "products": [
+    {
+      "name": "美妆",
+      "type": -1,
+      "pros": [
+        {
+          "name": "欧莱雅(L'Oreal)复颜年轻立显修颜霜",
+          "price": 100,
+          "oldPrice": 200,
+          "sellCount": 229,
+          "count": 5500,
+          "src": "./static/images/20150419215324206738.png"
+        },
+        {
+          "name": "兰蔻(Lancome)新精华肌底液",
+          "price": 100,
+          "oldPrice": 200,
+          "sellCount": 229,
+          "count": 5500,
+          "src": "./static/images/20150419215925039661.jpg"
+        },
+        {
+          "name": "兰芝(LANEIGE)水凝清盈精华水",
+          "price": 100,
+          "oldPrice": 200,
+          "sellCount": 229,
+          "count": 5500,
+          "src": "./static/images/20150508161047430286.jpg"
+        },
+        {
+          "name": "兰芝(Laneige)致美焕颜紧致眼霜",
+          "price": 100,
+          "oldPrice": 200,
+          "sellCount": 229,
+          "count": 5500,
+          "src": "./static/images/20150508163220565782.jpg"
+        },
+        {
+          "name": "兰芝雪润无瑕气垫粉凝霜SPF30",
+          "price": 100,
+          "oldPrice": 200,
+          "sellCount": 229,
+          "count": 5500,
+          "src": "./static/images/20150508162756077166.jpg"
+        }
+      ]
+    }
+  ]
+}

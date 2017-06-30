@@ -25,7 +25,7 @@
           <div class="detail-sales">
             <bar :value='10' :max='20'></bar>
           </div>
-          <XButton class="buy" mini text="添加到购物车"></XButton>
+          <XButton class="add" mini text="添加到购物车"></XButton>
         </div>
       </div>
       <divider>我是有底线的</divider>
@@ -79,9 +79,8 @@
       text-align: left;
       width: 100%
       .detail-title,.detail-price,.detail-sales
-        padding-bottom: 0.5rem;
+        margin-bottom: 0.5rem;
       .detail-title
-        height: 30px
         line-height: 1.5
         overflow : hidden;
         text-overflow: ellipsis;
@@ -93,7 +92,7 @@
           color: #f00
         .detail-price-old
           text-decoration: line-through
-      .buy
+      .add
         background: #f00
         color: #fff
 </style>

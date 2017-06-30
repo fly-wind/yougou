@@ -27,5 +27,5 @@ export default {
     color: #2c3e50
     font-size: 12px
     max-width: 750px
-    margin: 60px auto 0 auto
+    margin: 0 auto
 </style>
