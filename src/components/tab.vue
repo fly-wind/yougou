@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <button-tab v-model="demo01" class="tab vux-1px-t">
+    <button-tab v-model="selectIndex" class="tab vux-1px-t">
       <button-tab-item class="tab-item" href="#/index">
           <i class="fa fa-home fa-fw tab-item-icon"></i>
           <span class="tab-item-text">首页</span>
@@ -18,17 +18,34 @@
 </template>
 
 <script>
-  import {ButtonTab, ButtonTabItem, Divider} from 'vux'
+  import {ButtonTab, ButtonTabItem} from 'vux'
   export default {
     components: {
       ButtonTab,
-      ButtonTabItem,
-      Divider
+      ButtonTabItem
     },
     data () {
       return {
-        demo01: 0
+        selectIndex: 0
       }
+    },
+    mounted: function () {
+      this.$nextTick(function (index) {
+        console.log('NavBar Init')
+        // this.selectIndex = this.$router.currentRoute.path
+        let path = this.$router.currentRoute.path
+        switch (path) {
+          case '/index':
+            this.selectIndex = 0
+            break
+          case '/shoppcart':
+            this.selectIndex = 1
+            break
+          case '/usercenter':
+            this.selectIndex = 2
+            break
+        }
+      })
     }
   }
 </script>

@@ -14,23 +14,22 @@
       </ul>
     </div>-->
     <div class="products">
-      <div class="pro-item" v-for="item in mz">
-        <div class="pro-item-img"><img :src="item.src" alt="" /></div>
+      <div class="pro-item" v-for="item in products" :key="item.goods_id">
+        <div class="pro-item-img"><img src="/static/images/20150419215324206738.png" alt="" ></div>
         <div class="pro-item-detail">
-          <h2 class="detail-title" v-text="item.name"></h2>
+          <h2 class="detail-title" v-text="item.goods_name" :title="item.goods_name"></h2>
           <div class="detail-price">
-            <span class="detail-price-new" v-text="'￥'+item.price"></span>
-            <span class="detail-price-old" v-text="'￥'+item.oldPrice"></span>
+            <span class="detail-price-new" v-text="'￥'+item.goods_price"></span>
+            <span class="detail-price-old" v-text="'￥'+item.goods_price"></span>
           </div>
           <div class="detail-sales">
-            <bar :value='item.sellCount' :max='item.count'></bar>
+            <bar :value='10' :max='20'></bar>
           </div>
-          <XButton class="buy" mini text="立即购买"></XButton>
+          <XButton class="buy" mini text="添加到购物车"></XButton>
         </div>
       </div>
       <divider>我是有底线的</divider>
     </div>
-    
   </div>
 </template>
 
@@ -47,9 +46,8 @@
     },
     methods: {
       getList () {
-        let data = require('../../data.json')
-        this.products = data.products
-        this.mz = this.products[0].pros
+        let data = require('../../goods.json')
+        this.products = data.RECORDS
       }
     },
     created () {
@@ -69,7 +67,8 @@
     box-shadow: 1px 1px #ddd
     margin-bottom: 1rem
     .pro-item-img
-      flex: 0 0 120px
+      flex: 0 0 100px
+      padding-right: 10px
       display: -webkit-box
       -webkit-box-pack: center
       -webkit-box-align: center
@@ -82,7 +81,13 @@
       .detail-title,.detail-price,.detail-sales
         padding-bottom: 0.5rem;
       .detail-title
-        // font-size: 1rem;
+        height: 30px
+        line-height: 1.5
+        overflow : hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
       .detail-price
         .detail-price-new
           color: #f00

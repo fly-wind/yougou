@@ -1,5 +1,5 @@
 <template>
-  <div id="index">
+  <div id="usercenter">
     用户中心
   </div>
 </template>
