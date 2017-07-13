@@ -13,23 +13,25 @@
         <li><span>祛痘</span></li>
       </ul>
     </div>-->
-    <div class="products">
-      <div class="pro-item" v-for="item in products" :key="item.goods_id">
-        <div class="pro-item-img"><img src="/static/images/20150419215324206738.png" alt="" ></div>
-        <div class="pro-item-detail">
-          <h2 class="detail-title" v-text="item.goods_name" :title="item.goods_name"></h2>
-          <div class="detail-price">
-            <span class="detail-price-new" v-text="'￥'+item.goods_price"></span>
-            <span class="detail-price-old" v-text="'￥'+item.goods_price"></span>
+    <scroller :on-infinite="infinite" ref="my_scroller" class="v-scroll">
+      <div class="products">
+        <div class="pro-item row" v-for="item in products" :key="item.goods_id">
+          <div class="pro-item-img"><img src="/static/images/20150419215324206738.png" alt="" ></div>
+          <div class="pro-item-detail">
+            <h2 class="detail-title" v-text="item.goods_name" :title="item.goods_name"></h2>
+            <div class="detail-price">
+              <span class="detail-price-new" v-text="'￥'+item.goods_price"></span>
+              <span class="detail-price-old" v-text="'￥'+item.goods_price"></span>
+            </div>
+            <div class="detail-sales">
+              <bar :value='10' :max='20'></bar>
+            </div>
+            <XButton class="add" mini text="添加到购物车"></XButton>
           </div>
-          <div class="detail-sales">
-            <bar :value='10' :max='20'></bar>
-          </div>
-          <XButton class="add" mini text="添加到购物车"></XButton>
         </div>
       </div>
-      <divider>我是有底线的</divider>
-    </div>
+      <divider v-show="last">我是有底线的</divider>
+     </scroller>
   </div>
 </template>
 
@@ -37,6 +39,14 @@
   import {Grid, GridItem, XButton, Divider} from 'vux'
   import bar from '../components/bar'
   export default {
+    data () {
+      return { products: [], last: false }
+    },
+    mounted () {
+      this.top = 0
+      this.bottom = 10
+      this.getList()
+    },
     components: {
       Grid,
       GridItem,
@@ -46,17 +56,36 @@
     },
     methods: {
       getList () {
-        let data = require('../../goods.json')
+        let data = require('../../test.json')
         this.products = data.RECORDS
+        console.log(this.products.length)
+        this.max = this.products.length
+        this.products = this.products.slice(0, this.bottom)
+      },
+      infinite (done) {
+        if (this.bottom >= this.max) {
+          console.log('结束')
+          this.last = true
+          setTimeout(() => {
+            done(true)
+          }, 1500)
+          return
+        }
+        setTimeout(() => {
+          this.bottom = this.bottom + 10
+          this.getList()
+          setTimeout(() => {
+            done()
+          })
+        }, 1500)
       }
-    },
-    created () {
-      this.getList()
     }
   }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
+.v-scroll
+  top: 52px !important
 .products
   padding: 1rem
   margin-bottom: 40px
