@@ -20,7 +20,7 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
 .user-top
-  background: #f00
+  background: #e85353
   display: flex
   padding: 2rem
   .user-top-img
