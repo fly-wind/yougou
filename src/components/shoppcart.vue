@@ -5,12 +5,11 @@
       <div class="pro-item" v-for="item in products" :key="item.goods_id">
         <div class="pro-shop-name vux-1px-b">
           <input type="checkbox" class="pro-check" name="names">
-          <i class="icon-check"></i>
-          <!--<x-icon type="ios-circle-outline" size="20" class="icon-check"></x-icon>-->
+          <i class="icon-check">√</i>
           <span class="shop-name">{{item.shop_name}}</span>
         </div>
         <div class="pro-list">
-          <div class="select-item"><x-icon type="ios-checkmark" size="20" class="icon-check"></x-icon></div>
+          <div class="select-item"></div>
           <div class="pro-item-img">
             <img src="/static/images/20150419215324206738.png" alt="" >
           </div>
@@ -30,7 +29,8 @@
     </div>
     <div class="bottom vux-1px-t">
       <div class="bottom-select bottom-item">
-        <x-icon type="ios-circle-outline" size="20" class="icon-check"></x-icon>
+        <input type="checkbox" class="pro-check" name="names">
+        <i class="icon-check">√</i>
         <p>全选</p>
       </div>
       <div class="bottom-money bottom-item">
@@ -45,17 +45,19 @@
 </template>
 
 <script>
-  import {Group, XNumber, XButton} from 'vux'
+  import {Group, XNumber, XButton, CheckIcon} from 'vux'
   export default {
     components: {
       Group,
       XNumber,
-      XButton
+      XButton,
+      CheckIcon
     },
     data () {
       return {
         ischeck: false,
-        demo01: 1
+        demo01: 1,
+        demo1: false
       }
     },
     methods: {
@@ -76,18 +78,21 @@
 <style lang="stylus" rel="stylesheet/stylus">
 .icon-check
   display: inline-block
-  border: 1px solid #000
+  border: 1px solid #ccc
   width: 20px
   height: 20px
   border-radius: 50%
+  font-family: cursive
+  line-height: 20px
+  color: #fff
 .pro-check
   position: absolute;
   width: 20px;
   height: 20px;
   opacity: 0
 .pro-check:checked + .icon-check
-  content: '\2714'
-  color: #fff
+  /*content: '\2714'*/
+  /*color: #fff*/
   background: #f00
   border: 1px solid #f00
 .shopp-pros
@@ -104,8 +109,6 @@
       text-align: left
       padding-bottom: 0.5rem
       margin-bottom: 1rem
-      .shop-name
-        vertical-align: super
     .pro-list
       display: flex;
       .select-item

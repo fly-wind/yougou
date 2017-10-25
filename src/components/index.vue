@@ -86,6 +86,8 @@
 <style lang="stylus" rel="stylesheet/stylus">
 .v-scroll
   top: 52px !important
+  max-width 750px
+  left auto !important
 .products
   padding: 1rem
   margin-bottom: 40px
